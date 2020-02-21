@@ -5,10 +5,10 @@
 a) O(n) or linear because n is unknown. If we choose n to be 2 the function would run 8 times, however if we choose 10 it runs 1000 times.
 
 
-b) O(n^2) or quadratic time because we have a nested loop.
+b) O(n log n) first part is linear second part is log n
 
 
-c) O(2n^2) or recursive runtime because the function is being called inside itself with a return of bunnies -1 each time it goes through.
+c) O(n) linear input not chosen yet
 
 ## Exercise II
 
