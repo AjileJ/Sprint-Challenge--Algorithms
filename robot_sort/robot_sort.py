@@ -8,6 +8,7 @@ class SortingRobot:
         self._position = 0      # The list position the robot is at
         self._light = "OFF"     # The state of the robot's light
         self._time = 0          # A time counter (stretch)
+        
 
     def can_move_right(self):
         """
@@ -98,6 +99,33 @@ class SortingRobot:
         """
         # Fill this out
         pass
+    
+        self.set_light_on()
+        
+        while self.light_is_on() == True:
+            self.set_light_off()
+                
+            while self.can_move_right():
+                if self.move_right():
+                    self.compare_item()
+                    if self.compare_item() == 1:
+                        self.swap_item()
+                        self.light_is_on()
+                    elif self.compare_item() == -1:
+                       self.move_right()
+                       self.set_light_off()
+                       break    
+            while self.can_move_left():
+                if self.move_left():
+                    self.compare_item()
+                    if self.compare_item() == -1:
+                        self.move_left()
+                        self.set_light_off()
+                    elif self.compare_item() == 1:
+                        self.swap_item()
+                        self.light_is_on()
+                        break              
+                        
 
 
 if __name__ == "__main__":
