@@ -98,30 +98,31 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-    
+        # turn on robots light
         self.set_light_on()
-        self.swap_item()
-        while self.light_is_on() == True:
+        # While the robots light is on turn it off (reset)
+        while self.light_is_on():
             self.set_light_off()
-                
-            while self.can_move_right():
-                if self.move_right():
-                    self.compare_item()
-                    if self.compare_item() == 1:
-                        self.swap_item()
-                        self.light_is_on()
-                    elif self.compare_item() == -1:
-                       self.move_right()
-                       break   #* 
-            while self.can_move_left():
-                if self.move_left():
-                    self.compare_item()
-                    if self.compare_item() == -1:
-                        self.move_left()
-                    elif self.compare_item() == 1:
-                        self.swap_item()
-                        self.light_is_on()
-                        break   #*            
+            # while the robot can move right .. move right 
+            while self.can_move_right(): #returns true if robot can move right. else false
+                self.move_right()
+                # if the compared item is greater..swap it then turn the light on
+                if self.compare_item() == 1:
+                    self.swap_item()
+                    self.set_light_on()
+            # while the robot can move left.. swap item and continue moving left         
+            while self.can_move_left(): #returns true if teh robot can move left. else false
+                self.swap_item()
+                self.move_left()
+                # if the compared item is less..swap item then turn light on 
+                if self.compare_item() == -1:
+                    self.swap_item()
+                    self.set_light_on()
+                # move right..swap the item..then move left    
+                self.move_right()
+                self.swap_item()
+                self.move_left()             
+        
                         
 
 
